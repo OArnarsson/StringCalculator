@@ -7,7 +7,27 @@ public class CalculatorTest{
 
   @Test
   public void testEmptyString(){
-    assertEquals(30, Calculator.add("1,2,7,10,0,10"));
+    assertEquals(0, Calculator.add(""));
+  }
+
+  @Test
+  public void testOneInput(){
+    assertEquals(5, Calculator.add("5"));
+  }
+
+  @Test
+  public void testTwoInputs(){
+    assertEquals(10, Calculator.add("5,5"));
+  }
+
+  @Test
+  public void testMultipleInputs(){
+    assertEquals(30, Calculator.add("5,5,10,3,6,1"));
+  }
+
+  @Test
+  public void testNewLineInput(){
+    assertEquals(6, Calculator.add("1\n2,3"));
   }
 
 
