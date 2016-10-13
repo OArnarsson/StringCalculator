@@ -2,6 +2,10 @@ package is.ru.stringcalculator;
 
 public class Calculator {
   public static int add(String text){
+    if(hasNewLine(text)){
+      text = fixLine(text);
+    }
+
     if(text.equals("")) {
       return 0;
     }
@@ -10,7 +14,7 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 
-    else return Integer.parseInt(text);
+    return Integer.parseInt(text);
   }
 
 
@@ -25,5 +29,13 @@ public class Calculator {
     }
 
     return total;
+  }
+
+  private static boolean hasNewLine(String text) {
+    	return text.contains("\n");
+  }
+
+  private static String fixLine(String text) {
+    return text.replace("\n",",");
   }
 }
