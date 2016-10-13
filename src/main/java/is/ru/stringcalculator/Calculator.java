@@ -25,6 +25,9 @@ public class Calculator {
   private static int sum(String[] numbers){
     int total = 0;
     for(String number : numbers){
+      if(Integer.parseInt(number) < 0) {
+        		throw new IllegalArgumentException(negativeNumber(numbers));
+      }
       total += Integer.parseInt(number);
     }
 
@@ -37,5 +40,19 @@ public class Calculator {
 
   private static String fixLine(String text) {
     return text.replace("\n",",");
+  }
+
+  private static String negativeNumber(String[] numbers) {
+    String errorString = "Negatives not allowed: ";
+    for(String number : numbers) {
+      if(Integer.parseInt(number) < 0) {
+        errorString += number + ", ";
+      }
+    }
+
+    if(errorString.charAt(errorString.length() - 1) == ',') {
+      errorString = errorString.substring(0, errorString.length() - 2);
+    }
+    return errorString;
   }
 }
