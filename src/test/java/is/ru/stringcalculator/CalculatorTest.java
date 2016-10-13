@@ -32,7 +32,12 @@ public class CalculatorTest{
 
   @Test (expected = IllegalArgumentException.class)
   public void testNegativeInput(){
-    assertEquals(1, Calculator.add("-1,2"));
+    assertEquals(-9, Calculator.add("2,-4,3,-5"));
+  }
+
+  @Test
+  public void testOverThousand() {
+    assertEquals(2, Calculator.add("1000,2"));
   }
 
 
