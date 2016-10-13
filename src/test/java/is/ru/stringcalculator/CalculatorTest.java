@@ -7,7 +7,7 @@ public class CalculatorTest{
 
   @Test
   public void testEmptyString(){
-    assertEquals(0, Calculator.add(""));
+    assertEquals(4, Calculator.add("4"));
   }
 
 
