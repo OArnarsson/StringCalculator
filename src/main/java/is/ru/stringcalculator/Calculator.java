@@ -10,6 +10,12 @@ public class Calculator {
       return 0;
     }
 
+    else if(hasDiffDelimeter(text)) {
+				String delim = String.valueOf(delimeterCheck(text));
+        text = text.substring(4, text.length());
+        return sum(text.split(delim));
+    }
+
     else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
@@ -36,7 +42,7 @@ public class Calculator {
     return total;
   }
 
-  
+
 
   private static int toInt(String num) {
     return Integer.parseInt(num);
@@ -62,5 +68,13 @@ public class Calculator {
       errorString = errorString.substring(0, errorString.length() - 2);
     }
     return errorString;
+  }
+
+  public static boolean hasDiffDelimeter (String text) {
+    return (text.charAt(0) == '/' && text.charAt(1) == '/');
+  }
+
+  public static char delimeterCheck (String text) {
+    return text.charAt(2);
   }
 }
