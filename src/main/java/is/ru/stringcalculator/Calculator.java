@@ -36,6 +36,8 @@ public class Calculator {
     return total;
   }
 
+  
+
   private static int toInt(String num) {
     return Integer.parseInt(num);
   }
