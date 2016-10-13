@@ -14,7 +14,7 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 
-    return Integer.parseInt(text);
+    return toInt(text);
   }
 
 
@@ -25,13 +25,17 @@ public class Calculator {
   private static int sum(String[] numbers){
     int total = 0;
     for(String number : numbers){
-      if(Integer.parseInt(number) < 0) {
+      if(toInt(number) < 0) {
         		throw new IllegalArgumentException(negativeNumber(numbers));
       }
-      total += Integer.parseInt(number);
+      total += toInt(number);
     }
 
     return total;
+  }
+
+  private static int toInt(String num) {
+    return Integer.parseInt(num);
   }
 
   private static boolean hasNewLine(String text) {
@@ -45,7 +49,7 @@ public class Calculator {
   private static String negativeNumber(String[] numbers) {
     String errorString = "Negatives not allowed: ";
     for(String number : numbers) {
-      if(Integer.parseInt(number) < 0) {
+      if(toInt(number) < 0) {
         errorString += number + ", ";
       }
     }
