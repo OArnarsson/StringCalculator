@@ -7,7 +7,7 @@ public class CalculatorTest{
 
   @Test
   public void testEmptyString(){
-    assertEquals(3, Calculator.add("1,2"));
+    assertEquals(30, Calculator.add("1,2,7,10,0,10"));
   }
 
 
