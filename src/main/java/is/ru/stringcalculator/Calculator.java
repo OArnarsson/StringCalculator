@@ -11,12 +11,11 @@ public class Calculator {
     }
 
     else if(hasDiffDelimeter(text)) {
-				String delim = String.valueOf(delimeterCheck(text));
-        text = text.substring(4, text.length());
-        return sum(text.split(delim));
+        text = delimFix(text);
+        return sum(splitNumbers(text));
     }
 
-    else if(text.contains(",")){
+    if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
 
@@ -42,8 +41,6 @@ public class Calculator {
     return total;
   }
 
-
-
   private static int toInt(String num) {
     return Integer.parseInt(num);
   }
@@ -53,7 +50,7 @@ public class Calculator {
   }
 
   private static String fixLine(String text) {
-    return text.replace("\n",",");
+    return text.replace("\n", ",");
   }
 
   private static String negativeNumber(String[] numbers) {
@@ -74,7 +71,23 @@ public class Calculator {
     return (text.charAt(0) == '/' && text.charAt(1) == '/');
   }
 
-  public static char delimeterCheck (String text) {
-    return text.charAt(2);
+  public static String delimFix (String text) {
+    //Removes // from start of string
+    text = text.substring(2, text.length());
+
+    //First char after // is start of delimeter
+    String delim = String.valueOf(text.charAt(0));
+
+    //While the current char isn't newline, its still a part of the delimeter
+    for(int i = 1; i < text.length(); i ++) {
+      if(text.charAt(i) == String.valueOf("\n").charAt(0)) {
+        break;
+      }
+
+      else delim += String.valueOf(text.charAt(i));
+    }
+
+    text = text.substring(delim.length()+1, text.length());
+    return text.replace(delim, ",");
   }
 }

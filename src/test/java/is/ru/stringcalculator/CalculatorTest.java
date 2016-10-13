@@ -11,6 +11,11 @@ public class CalculatorTest{
   }
 
   @Test
+  public void newLine() {
+        assertEquals(2, Calculator.add("//;:;\n2"));
+  }
+
+  @Test
   public void testOneInput(){
     assertEquals(5, Calculator.add("5"));
     assertEquals(1, Calculator.add("1"));
@@ -47,9 +52,16 @@ public class CalculatorTest{
   }
 
   @Test
-  public void diffDelimeter() {
+  public void diffDelimeterOneChar() {
     assertEquals(3, Calculator.add("//;\n1;2"));
+    assertEquals(3, Calculator.add("//#\n1#2"));
+    assertEquals(3, Calculator.add("//6\n162"));
   }
 
-
+  @Test
+  public void diffDelimeterMultipleChars() {
+    assertEquals(3, Calculator.add("//;:;\n1;:;2"));
+    assertEquals(3, Calculator.add("//#^&\n1#^&2"));
+    assertEquals(3, Calculator.add("//666\n16662"));
+  }
 }
